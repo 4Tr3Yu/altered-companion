@@ -1,34 +1,35 @@
+import Tracker from './Tracker'
 export default function GameTracker() {	
 	const trackers = {
 		player1: {
 			hero: {
 				expeditions: [
-					{ value: 0, d:"b", color: 'green' },
-					{ value: 0, d:"b", color: 'sky' },
-					{ value: 0, d:"b", color: 'amber' },
+					{ id:"p1thf", value: 0, d:"b", color: 'green' },
+					{ id:"p1thi", value: 0, d:"b", color: 'sky' },
+					{ id:"p1thm", value: 0, d:"b", color: 'amber' },
 				]
 			},
 			companion: {
 				expeditions: [
-					{ value: 0, d:"b", color: 'green' },
-					{ value: 0, d:"b", color: 'sky' },
-					{ value: 0, d:"b", color: 'amber' },
+					{ id:"p1tcf", value: 0, d:"b", color: 'green' },
+					{ id:"p1tci", value: 0, d:"b", color: 'sky' },
+					{ id:"p1tcm", value: 0, d:"b", color: 'amber' },
 				]
 			}
 		},
 		player2: {
 			hero: {
 				expeditions: [
-					{ value: 0, d:"t", color: 'green' },
-					{ value: 0, d:"t", color: 'sky' },
-					{ value: 0, d:"t", color: 'amber' },
+					{ id:"p2thf", value: 0, d:"t", color: 'green' },
+					{ id:"p2thi", value: 0, d:"t", color: 'sky' },
+					{ id:"p2thm", value: 0, d:"t", color: 'amber' },
 				]
 			},
 			companion: {
 				expeditions: [
-					{ value: 0, d:"t", color: 'green' },
-					{ value: 0, d:"t", color: 'sky' },
-					{ value: 0, d:"t", color: 'amber' },
+					{ id:"p2tcf", value: 0, d:"t", color: 'green' },
+					{ id:"p2tci", value: 0, d:"t", color: 'sky' },
+					{ id:"p2tcm", value: 0, d:"t", color: 'amber' },
 				]
 			}
 		}	
@@ -47,41 +48,17 @@ export default function GameTracker() {
 					</div>
 					<div className="expeditions flex-auto  px-2 flex gap-1">
 						<div className="expedition-left flex justify-around w-full gap-1">
-							<div className="tracker bg-gradient-to-b from-green-600 to-green-400 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
-							<div className="tracker bg-gradient-to-b from-sky-700 to-sky-500 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
-							<div className="tracker bg-gradient-to-b from-amber-900 to-amber-700 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
+							{trackers.player1.hero.expeditions.map((tracker, ) => (
+								<Tracker key={tracker.id} {...tracker} />
+							))}
 						</div>
 						<div className="spacer w-10 bg-white/45">
 
 						</div>
 						<div className="expedition-right flex justify-around w-full gap-1">
-							<div className="tracker bg-gradient-to-b from-green-600 to-green-400 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
-							<div className="tracker bg-gradient-to-b from-sky-700 to-sky-500 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
-							<div className="tracker bg-gradient-to-b from-amber-900 to-amber-700 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl mt-4">20</span>
-							</div>
+							{trackers.player1.companion.expeditions.map((tracker, ) => (
+								<Tracker key={tracker.id} {...tracker} />
+							))}
 						</div>
 						
 					</div>
@@ -93,41 +70,17 @@ export default function GameTracker() {
 				<div className="player-2 flex-auto flex flex-col">
 					<div className="expeditions flex-auto px-2 flex gap-1">
 						<div className="expedition-left flex justify-around w-full gap-1">
-							<div className="tracker bg-gradient-to-t from-green-600 to-green-400 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
-							<div className="tracker bg-gradient-to-t from-sky-700 to-sky-500 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
-							<div className="tracker bg-gradient-to-t from-amber-900 to-amber-700 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
+						{trackers.player2.hero.expeditions.map((tracker, ) => (
+								<Tracker key={tracker.id} {...tracker} />
+							))}
 						</div>
 						<div className="spacer w-10 bg-white/45">
 
 						</div>
 						<div className="expedition-right flex justify-around w-full gap-1">
-							<div className="tracker bg-gradient-to-t from-green-600 to-green-400 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
-							<div className="tracker bg-gradient-to-t from-sky-700 to-sky-500 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
-							<div className="tracker bg-gradient-to-t from-amber-900 to-amber-700 w-full flex flex-col justify-center items-center p-1">
-								<span className="font-bold text-4xl mb-4">20</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center mb-2">+</span>
-								<span className="font-bold text-4xl flex-auto border w-full border-white/45 flex items-center justify-center">-</span>
-							</div>
+						{trackers.player2.companion.expeditions.map((tracker, ) => (
+								<Tracker key={tracker.id} {...tracker} />
+							))}
 						</div>
 						
 					</div>
